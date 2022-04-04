@@ -1,9 +1,9 @@
-output "private_subnets" {
-    description = "The ids of the defined public subnets"
-    value = aws_subnet.private_subnet
+output "private_subnet_ids" {
+  description = "The ids of the defined private subnets"
+  value       = [for subnet in aws_subnet.private_subnet : subnet.id]
 }
 
-output "public_subnets" {
-    description = "The ids of the defined public subnets"
-    value = aws_subnet.public_subnet
+output "public_subnet_ids" {
+  description = "The ids of the defined public subnets"
+  value       = [for subnet in aws_subnet.public_subnet : subnet.id]
 }
